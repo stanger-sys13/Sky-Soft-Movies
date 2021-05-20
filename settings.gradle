@@ -1,0 +1,2 @@
+rootProject.name = "Sky Soft Movies"
+include ':app'
