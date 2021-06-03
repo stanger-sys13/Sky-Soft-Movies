@@ -1,4 +1,4 @@
-package com.example.skysoftmovies.ui.list
+package com.example.skysoftmovies.ui.tablist
 
 import android.content.Intent
 import android.os.Bundle
@@ -14,40 +14,37 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.skysoftmovies.R
 import com.example.skysoftmovies.adapter.AdapterListFilmes
 import com.example.skysoftmovies.model.Item
-import com.example.skysoftmovies.ui.tablist.TabTwoActivity
+import com.example.skysoftmovies.ui.list.ListMoviesActivity
 
-class ListMoviesFragment : Fragment() {
-    val btnTabTwo by lazy { view?.findViewById<Button>(R.id.btn_tab_two) }
+class TabTwoFragment : Fragment() {
+    val btnlistmovie by lazy { view?.findViewById<Button>(R.id.btn_list_movie) }
 
     private var listDeFilmes = mutableListOf<Item>()
     val recycler1 by lazy {view?.findViewById<RecyclerView>(R.id.recycler_list)}
 
     companion object {
-        fun newInstance() = ListMoviesFragment()
+        fun newInstance() = TabTwoFragment()
     }
 
-    private lateinit var viewModel: ListMoviesViewModel
+    private lateinit var viewModel: TabTwoViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_list_movies, container, false)
+        return inflater.inflate(R.layout.fragment_tab_two, container, false)
 
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-
-        btnTabTwo?.setOnClickListener {
-            val intent = Intent(activity, TabTwoActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)// close activty
+        btnlistmovie?.setOnClickListener {
+            val intent = Intent(activity, ListMoviesActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
             startActivity(intent)
         }
 
-
-        viewModel = ViewModelProvider(this).get(ListMoviesViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(TabTwoViewModel::class.java)
 
         viewModel.baseListDeFilmesCoroutines()
 

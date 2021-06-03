@@ -4,8 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.list.ListMoviesFragment"
+    android:padding="10dp"
+    tools:context=".ui.tablist.TabTwoFragment"
     android:background="@color/black">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_list"
+        android:layout_width="210dp"
+        android:layout_height="675dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_listfilmes"
+        tools:ignore="DuplicateIds" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,27 +31,21 @@
         android:textSize="20sp"
         android:id="@+id/tv_title_listfilmes"
         android:textColor="@color/white"/>
+
     <Button
-        android:id="@+id/btn_tab_two"
+        android:id="@+id/btn_list_movie"
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:backgroundTint="@color/teal_700"
         android:clickable="true"
         android:fontFamily="monospace"
-        android:text="TabList"
+        android:text="List"
         android:textAllCaps="false"
         android:textSize="18sp"
         android:textStyle="normal"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="195dp"
+        tools:layout_editor_absoluteY="-8dp" />
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="650dp"
-        android:id="@+id/recycler_list"
-        app:layout_constraintTop_toBottomOf="@id/tv_title_listfilmes"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="15dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

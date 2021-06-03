@@ -1,29 +1,32 @@
-package com.example.skysoftmovies.ui.list
+package com.example.skysoftmovies.ui.tablist
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.skysoftmovies.ProfileActivity
 import com.example.skysoftmovies.R
 import com.example.skysoftmovies.ui.login.LoginActivity
 
-
-class ListMoviesActivity : AppCompatActivity() {
+class TabTwoActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list_movies)
+        setContentView(R.layout.activity_tab_two)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, ListMoviesFragment.newInstance())
+                .replace(R.id.container, TabTwoFragment.newInstance())
                 .commitNow()
         }
     }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.layout.nav_menu,menu)
+        menuInflater.inflate(R.layout.nav_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
+
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         val id = item.itemId
@@ -50,3 +53,12 @@ class ListMoviesActivity : AppCompatActivity() {
     }
 
 }
+    
+
+
+
+
+
+
+
+
