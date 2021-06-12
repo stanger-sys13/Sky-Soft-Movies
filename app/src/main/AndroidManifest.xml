@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.skysoftmovies">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,7 +12,9 @@
         android:roundIcon="@drawable/ic_clapperboard"
         android:supportsRtl="true"
         android:theme="@style/Theme.SkySoftMovies">
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".ui.register.ActivityRegister"></activity>
+
+        <activity android:name=".ProfileActivity" />
         <activity android:name=".ui.tablist.TabTwoActivity" />
         <activity android:name=".ui.list.ListMoviesActivity" />
         <activity android:name=".SplashActivity">
@@ -23,6 +26,9 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".ui.login.LoginActivity" />
+
+
+        <meta-data android:name="preloaded_fonts" android:resource="@array/preloaded_fonts"/>
     </application>
 
 </manifest>

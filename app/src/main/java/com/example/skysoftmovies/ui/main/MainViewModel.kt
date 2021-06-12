@@ -72,7 +72,7 @@ class MainViewModel : ViewModel() {
 
     private fun Erroor(error: Throwable) {
         when(error){
-            is UnknownHostException -> errorMessage.postValue("verifique sua conexão")
+            is UnknownHostException -> errorMessage.postValue("error")
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.skysoftmovies.ui.login
+package com.example.skysoftmovies.ui.register
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -12,24 +12,24 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.skysoftmovies.R
+import com.example.skysoftmovies.db.database.UserDatabase
 import com.example.skysoftmovies.db.modelorient.User
 import com.example.skysoftmovies.db.viewModel.LoginViewModel
-import com.example.skysoftmovies.ui.list.ListMoviesActivity
+import com.example.skysoftmovies.ui.login.LoginActivity
 import com.example.skysoftmovies.ui.main.MainViewModel
-import com.example.skysoftmovies.ui.register.ActivityRegister
 import kotlinx.android.synthetic.main.login_fragment.*
-import java.util.regex.Pattern.compile
 
-
-class LoginFragment: Fragment() {
+class RegisterFragment : Fragment() {
 
     var isExist = false
 
-    val btnLogin by lazy { view?.findViewById<Button>(R.id.btn_login) }
-    val btn_register by lazy { view?.findViewById<Button>(R.id.btn_register) }
+    val btnLogin2 by lazy { view?.findViewById<Button>(R.id.btn_login2) }
+    val btn_register2 by lazy { view?.findViewById<Button>(R.id.btn_register2) }
+
+
 
     companion object {
-        fun newInstance() = LoginFragment()
+        fun newInstance() = RegisterFragment()
     }
 
 
@@ -37,8 +37,10 @@ class LoginFragment: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.login_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_register, container, false)
+
     }
+
 
 
 
@@ -46,76 +48,70 @@ class LoginFragment: Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val userDetailsRepository = ViewModelProvider(this).get(LoginViewModel::class.java)
-
-        btn_register?.setOnClickListener {
-            val intent = Intent(activity, ActivityRegister::class.java)
+       // val userDetailsRepository = activity?.let { ViewModelProvider(it).get(LoginViewModel::class.java) }
+        val userDetailsRepository = ViewModelProvider(activity!!).get(LoginViewModel::class.java)
+        btnLogin2?.setOnClickListener {
+            val intent = Intent(activity, LoginActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)//no history flag
-            // start  next activity
+            // start your next activity
             startActivity(intent)
         }
 
 
 
-        btnLogin?.setOnClickListener {
+        btn_register2?.setOnClickListener {
             if (validation()) {
-
                 userDetailsRepository.getGetAllData().observe(this, object : Observer<List<User>> {
                     override fun onChanged(t: List<User>) {
                         var userObject = t
 
                         for (i in userObject.indices) {
+
+
                             if (userObject[i].mobillogin?.equals(et_user.text.toString())!!) {
-
-                                if (userObject[i].password?.equals(et_pass.text.toString())!!) {
-
-
-                                    val intent = Intent(activity, ListMoviesActivity::class.java)
-                                        .putExtra("UserDetials", userObject[i])
-                                    // start your next activity
-                                    startActivity(intent)
-
-                                } else {
-                                    Toast.makeText(activity, " Password is Incorrect ", Toast.LENGTH_LONG)
-                                        .show()
-
-                                }
                                 isExist = true
+                                //Toast.makeText(this@SignupActivity," User Already Registered ", Toast.LENGTH_LONG).show()
                                 break
 
                             } else {
                                 isExist = false
+                                continue
+
                             }
                         }
 
                         if (isExist) {
+                            Toast.makeText(activity, " User Already Registered !!! ", Toast.LENGTH_LONG)
+                                .show()
 
                         } else {
 
-                            Toast.makeText(activity, " User Not Registered ", Toast.LENGTH_LONG).show()
+                            val user = User()
+                            user.mobillogin = et_user.text.toString()
+                            user.password = et_pass.text.toString()
+                            val userDatabase = UserDatabase
+                            userDatabase.getDatabase(activity!!)?.daoAccess()?.insertUserData(user)
+                            Toast.makeText(activity, " User  Registered Successfully", Toast.LENGTH_LONG)
+                                .show()
+
+
                         }
 
                     }
 
                 })
             }
+
         }
 
 
     }
-    private val emailRegex = compile(
-        "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
-                "\\@" +
-                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
-                "(" +
-                "\\." +
-                "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
-                ")+"
-    )
+
+
     private fun validation(): Boolean {
 
         if (et_user.text.isNullOrEmpty()) {
-            Toast.makeText(activity, " Enter Login ", Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, " Enter Mobile Number ", Toast.LENGTH_LONG).show()
             return false
         }
 //        if (et_user.text.toString().emailRegex.matcher("john.doe@mail.com").matches()) {
@@ -123,8 +119,17 @@ class LoginFragment: Fragment() {
 //            return false
 //        }
 
+
         if (et_pass.text.isNullOrEmpty()) {
             Toast.makeText(activity, " Enter Password ", Toast.LENGTH_LONG).show()
+            return false
+        }
+        if (et_pass.text.toString().length < 4 ) {
+            Toast.makeText(activity, " Enter minimum 4 symbol ", Toast.LENGTH_LONG).show()
+            return false
+        }
+        if (et_pass.text.toString().length > 20 ) {
+            Toast.makeText(activity, " Enter max 20 symbol ", Toast.LENGTH_LONG).show()
             return false
         }
         return true
@@ -132,12 +137,4 @@ class LoginFragment: Fragment() {
 
 
 }
-
-
-
-
-
-
-
-
 

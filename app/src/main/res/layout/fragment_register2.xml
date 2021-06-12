@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@color/black">
+
+<!--    <EditText-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:paddingStart="15dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginStart="17dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--&lt;!&ndash;        app:layout_constraintTop_toBottomOf="@+id/iv_front_image"&ndash;&gt;-->
+<!--        android:id="@+id/et_user"-->
+<!--        android:hint=" E-mail"-->
+<!--        android:textSize="14dp"-->
+<!--        android:fontFamily="monospace"-->
+<!--        android:textColor="@android:color/darker_gray"-->
+<!--        android:background="@drawable/custom_layout"-->
+<!--        android:imeOptions="actionNext"-->
+<!--        android:inputType="textCapSentences" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

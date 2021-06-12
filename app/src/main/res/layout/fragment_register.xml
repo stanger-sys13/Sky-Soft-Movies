@@ -55,6 +55,9 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+
+
+
     <ImageView
         android:id="@+id/iv_principal"
         android:layout_width="match_parent"
@@ -63,14 +66,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-<!--    <View-->
-<!--        android:id="@+id/opacityFilter"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:background="@android:color/black"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:alpha="0.6"/>-->
 
     <ImageView
         android:layout_width="220dp"
@@ -81,6 +76,7 @@
         android:id="@+id/iv_front_image"
         android:src="@drawable/people"
         android:layout_marginTop="130dp"/>
+
 
 
     <EditText
@@ -114,7 +110,7 @@
         app:layout_constraintTop_toBottomOf="@+id/et_pass" />
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_login2"
         android:layout_width="310dp"
         android:layout_height="60dp"
         android:layout_marginStart="87dp"
@@ -122,7 +118,7 @@
         android:layout_marginEnd="86dp"
         android:backgroundTint="@color/red"
         android:clickable="true"
-        android:text="Enter"
+        android:text="Log In"
         android:fontFamily="monospace"
         android:textAllCaps="false"
         android:textSize="18sp"
@@ -131,22 +127,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_pass" />
     <Button
-        android:id="@+id/btn_register"
+        android:id="@+id/btn_register2"
         android:layout_width="310dp"
         android:layout_height="60dp"
         android:layout_marginStart="87dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="86dp"
         android:backgroundTint="@color/red"
         android:clickable="true"
-        android:text="Check In"
+        android:text="Register"
         android:fontFamily="monospace"
         android:textAllCaps="false"
         android:textSize="18sp"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_login2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
