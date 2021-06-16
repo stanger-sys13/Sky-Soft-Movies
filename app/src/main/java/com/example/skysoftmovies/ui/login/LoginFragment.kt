@@ -72,7 +72,7 @@ class LoginFragment: Fragment() {
 
                                     val intent = Intent(activity, ListMoviesActivity::class.java)
                                         .putExtra("UserDetials", userObject[i])
-                                    // start your next activity
+                                    // ListMoviesActivity -> ProfileActivity
                                     startActivity(intent)
 
                                 } else {

@@ -17,9 +17,11 @@
         <item name="windowNoTitle">true</item>
 
     </style>
-
     <style name="ButtomTheme" parent="Theme.AppCompat">
         <item name="colorPrimary">@color/white</item>
-
-    </style>
-</resources>
+            <item name="windowActionBar">false</item>
+            <item name="windowNoTitle">true</item>
+        </style>
+    <style name="Theme.DrawerLayout.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.DrawerLayout.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    </resources>

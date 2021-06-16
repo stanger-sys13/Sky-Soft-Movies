@@ -4,13 +4,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.skysoftmovies.ProfileActivity
 import com.example.skysoftmovies.R
 import com.example.skysoftmovies.ui.login.LoginActivity
 
-class TabTwoActivity: AppCompatActivity() {
+
+class TabTwoActivity: AppCompatActivity(){
+
+    private var _binding: nav_menu? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tab_two)
@@ -19,15 +23,25 @@ class TabTwoActivity: AppCompatActivity() {
                 .replace(R.id.container, TabTwoFragment.newInstance())
                 .commitNow()
         }
+
+
+
     }
+
+
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.layout.nav_menu, menu)
         return super.onCreateOptionsMenu(menu)
+
+
     }
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        super.onOptionsItemSelected(item)
+
 
         val id = item.itemId
 
